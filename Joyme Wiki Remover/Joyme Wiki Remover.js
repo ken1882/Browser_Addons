@@ -9,6 +9,7 @@
 // @match        http://wiki.joyme.com/*
 // @homepage     https://github.com/ken1882/Browser_Addons/tree/master/Joyme%20Wiki%20Remover
 // @updateURL    https://raw.githubusercontent.com/ken1882/Browser_Addons/master/Joyme%20Wiki%20Remover/Joyme%20Wiki%20Remover.js
+// @run-at       document-start
 // @grant        none
 // ==/UserScript==
 
