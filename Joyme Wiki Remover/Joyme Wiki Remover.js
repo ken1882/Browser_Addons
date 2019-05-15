@@ -7,6 +7,8 @@
 // @encoding     utf-8
 // @license      https://creativecommons.org/licenses/by-sa/4.0/
 // @match        http://wiki.joyme.com/*
+// @homepage     https://github.com/ken1882/Browser_Addons/tree/master/Joyme%20Wiki%20Remover
+// @updateURL    https://raw.githubusercontent.com/ken1882/Browser_Addons/master/Joyme%20Wiki%20Remover/Joyme%20Wiki%20Remover.js
 // @grant        none
 // ==/UserScript==
 
@@ -14,16 +16,19 @@ function removeElement(ele){
   ele.parentNode.removeChild(ele);
 }
 
-// https://translate.google.com.tw/translate?hl=&sl=zh-CN&tl=zh-TW&u=
 (function() {
   'use strict';
 
   let removeTargetClass = ["bl-r-adv", "share-right"];
   let flagRemoved = {};
   let updateTime = 300;
+  let timeoutDuration = 10000;
+  let timeoutTimer = 0
 
   let elementKiller = function(name){
-    if(flagRemoved[name]){return ;}
+    timeoutTimer += updateTime;
+    if(flagRemoved[name] || timeoutTimer > timeoutDuration){return ;}
+    console.log("Listening " + name + ' ' + document.getElementsByClassName(name)[0])
     try{
       removeElement(document.getElementsByClassName(name)[0]);
       flagRemoved[name] = true;
